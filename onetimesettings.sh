@@ -10,6 +10,7 @@ orig="$(head -n1 /boot/cmdline.txt) cgroup_enable=cpuset cgroup_memory=1 cgroup_
 echo $orig | sudo tee /boot/cmdline.txt
 
 echo fixing docker driver...
+mkdir -p /etc/docker
 touch /etc/docker/daemon.json
 echo '{
 	"exec-opts": ["native.cgroupdriver=systemd"],
